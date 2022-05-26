@@ -1,2 +1,6 @@
 #!/bin/bash
+<<<<<<< HEAD
 useradd
+=======
+su betty
+>>>>>>> Task 0.My name is Betty
