@@ -1,1 +1,2 @@
-#!/bin/bash/
+#!/bin/bash
+chmod -rwxr-x-wx hell
