@@ -1,3 +1,5 @@
 chmod 644 hello 11-directories_permissions
 chmod ug+x,o+r hello 6-multiple_permissions
 chmod ug+x o+r hello 6-multiple_permissions
+chmod ug+x o+r hello 6-multiple_permissions
+chmod -r-xr-xr-- hello 6-multiple_permissions
