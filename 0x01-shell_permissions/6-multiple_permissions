@@ -1,2 +1,2 @@
 #!/bin/bash
-d-r-xr-xr--
+chmod 1774 hello
