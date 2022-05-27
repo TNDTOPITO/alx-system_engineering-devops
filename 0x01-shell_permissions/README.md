@@ -1,1 +1,1 @@
-script that adds execute permission to all subdirectories of the current directory for the owner, the group owner and all other users
+cript that adds execution permission to the owner, the group owner and the other users, to the file hello
