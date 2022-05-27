@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod u+rwe olle
+chmod 664 hello
