@@ -1,1 +1,1 @@
-script that sets the permission to the file hello as
+script that sets the permission to the file hello
