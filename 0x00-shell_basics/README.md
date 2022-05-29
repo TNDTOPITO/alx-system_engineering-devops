@@ -1,1 +1,1 @@
-script that copies all the HTML files from the current
+script that prints the absolute path name of the current working directory
