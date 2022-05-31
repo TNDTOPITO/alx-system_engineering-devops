@@ -1,1 +1,1 @@
-script that prints HEllo, World
+script that displays a confused smiley
