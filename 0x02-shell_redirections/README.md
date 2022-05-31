@@ -1,1 +1,1 @@
-script that displays a confused smiley
+Display the last 10 lines of /etc/passwd
