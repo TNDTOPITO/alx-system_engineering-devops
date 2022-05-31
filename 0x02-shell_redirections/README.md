@@ -1,1 +1,1 @@
-script that displays the third line
+script that creates a file
