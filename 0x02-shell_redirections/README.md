@@ -1,1 +1,1 @@
-script that displays all users and their home directories
+script that prints Helo, World
