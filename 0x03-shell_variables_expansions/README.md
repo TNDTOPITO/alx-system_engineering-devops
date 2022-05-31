@@ -1,1 +1,1 @@
-script that prints hello user, where user is the current Linux user
+script that prints all possible combinations of two letters, except oo
