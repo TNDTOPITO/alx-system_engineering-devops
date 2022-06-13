@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod mv [A-Z]* /tmp/u 
+chmod mv -t /tmp/u [[:upper:]]* \
