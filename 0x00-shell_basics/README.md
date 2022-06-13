@@ -1,1 +1,1 @@
-prints the absolute path name of the current working directory
+moves all files beginning with an uppercase letter to the directory /tmp/u
