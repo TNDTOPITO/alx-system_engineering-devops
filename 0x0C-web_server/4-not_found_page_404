@@ -9,8 +9,8 @@ echo "Hello World" > /var/www/html/index.html
 
 # Configurate server
 ufw allow 'Nginx HTTP'
-
 f_config="/etc/nginx/sites-available/default"
+
 # Add redirection
 new_site="https://github.com/TNDTOPITO/"
 sed -i "/listen 80 default_server/a rewrite ^/redirect_me $new_site permanent;" $f_config
