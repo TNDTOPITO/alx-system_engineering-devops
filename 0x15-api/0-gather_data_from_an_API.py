@@ -3,7 +3,6 @@
 import json
 import urllib.request
 
-
 def get_todo_list(employee_id):
     url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
     response = urllib.request.urlopen(url)
@@ -27,4 +26,3 @@ def get_todo_list(employee_id):
 
 employee_id = input("Enter employee ID: ")
 get_todo_list(int(employee_id))
-
