@@ -1,33 +1,21 @@
 #!/usr/bin/python3
-"""
-Using https://jsonplaceholder.typicode.com
-returns info about employee TODO progress
-Implemented using recursion
-"""
-import re
+""" Script that uses JSONPlaceholder API to get information about employee """
 import requests
 import sys
 
 
-API = "https://jsonplaceholder.typicode.com"
-"""REST API url"""
-
-
-if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        if re.fullmatch(r'\d+', sys.argv[1]):
-            id = int(sys.argv[1])
-            user_res = requests.get('{}/users/{}'.format(API, id)).json()
-            todos_res = requests.get('{}/todos'.format(API)).json()
-            user_name = user_res.get('name')
-            todos = list(filter(lambda x: x.get('userId') == id, todos_res))
-            todos_done = list(filter(lambda x: x.get('completed'), todos))
-            print(
-                'Employee {} is done with tasks({}/{}):'.format(
-                    user_name,
-                    len(todos_done),
-                    len(todos)
-                )
-            )
-            for todo_done in todos_done:
-                print('\t {}'.format(todo_done.get('title')))
+ url = f'https://jsonplaceholder.typicode.com/users/{sys.argv[1]}/todos'
+    req = requests.get(url)
+    com_tasks = []
+    no = 0
+    for task in req.json():
+        if task.get('completed'):
+            com_tasks.append(task.get('title'))
+        no += 1
+    url = f'https://jsonplaceholder.typicode.com/users/{sys.argv[1]}'
+    req = requests.get(url)
+    name = req.json().get('name')
+    msg = f'Employee {name} is done with tasks({len(com_tasks)}/{no}:'
+    print(msg)
+    for task in com_tasks:
+        print('\t ' + task)
