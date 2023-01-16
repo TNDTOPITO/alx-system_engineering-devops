@@ -1,31 +1,33 @@
 #!/usr/bin/python3
 """ Script that uses JSONPlaceholder API to get information about employee """
-
-
 import json
-import urllib.request
+import re
+import requests
+import sys
 
-def get_todo_list(employee_id):
-    url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
-    response = urllib.request.urlopen(url)
-    data = json.loads(response.read())
 
-    employee_name = ""
-    tasks = []
-    for task in data:
-        if employee_name == "":
-            user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-            user_response = urllib.request.urlopen(user_url)
-            user_data = json.loads(user_response.read())
-            employee_name = user_data["name"]
-        tasks.append({"task": task["title"], "completed": task["completed"], "username": employee_name})
-    output = {str(employee_id): tasks}
+API = "https://jsonplaceholder.typicode.com"
+"""REST API url"""
 
-    filename = f"{employee_id}.json"
-    with open(filename, 'w') as json_file:
-        json.dump(output, json_file)
-    print(f"Tasks data exported to {filename}.")
 
-employee_id = input("Enter employee ID: ")
-get_todo_list(int(employee_id))
-
+if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        if re.fullmatch(r'\d+', sys.argv[1]):
+            id = int(sys.argv[1])
+            user_res = requests.get('{}/users/{}'.format(API, id)).json()
+            todos_res = requests.get('{}/todos'.format(API)).json()
+            user_name = user_res.get('username')
+            todos = list(filter(lambda x: x.get('userId') == id, todos_res))
+            with open("{}.json".format(id), 'w') as json_file:
+                user_data = list(map(
+                    lambda x: {
+                        "task": x.get("title"),
+                        "completed": x.get("completed"),
+                        "username": user_name
+                    },
+                    todos
+                ))
+                user_data = {
+                    "{}".format(id): user_data
+                }
+                json.dump(user_data, json_file)
